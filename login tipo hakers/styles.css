@@ -1,0 +1,241 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Fira Code', monospace;
+  background-color: #0f0f0f;
+  color: #00ffcc;
+  overflow: hidden;
+  height: 100vh;
+  position: relative;
+}
+
+/* Matrix Rain */
+.matrix-rain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.matrix-column {
+  position: absolute;
+  top: -100%;
+  white-space: pre;
+  color: #00ff00;
+  font-size: 14px;
+  animation: drop linear infinite;
+  font-family: monospace;
+}
+
+@keyframes drop {
+  0% { transform: translateY(-100%); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+/* Background Grid */
+.grid-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(rgba(0,255,0,0.05) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0,255,0,0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+  z-index: 0;
+}
+
+/* Scan Lines */
+.scan-lines::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 255, 0, 0.05),
+    rgba(0, 255, 0, 0.05) 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Terminal lines */
+.terminal-line.top,
+.terminal-line.bottom {
+  position: absolute;
+  height: 1px;
+  width: 100%;
+  background: #00ff00;
+  box-shadow: 0 0 10px #00ff00;
+  z-index: 2;
+}
+
+.terminal-line.top { top: 0; }
+.terminal-line.bottom { bottom: 0; }
+
+/* Login Container */
+.login-container {
+  position: relative;
+  z-index: 3;
+  max-width: 400px;
+  margin: 8vh auto;
+  background-color: rgba(0, 0, 0, 0.75);
+  border: 2px solid #00ffcc;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 0 20px #00ffcc;
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.login-header h1 {
+  font-size: 1.6rem;
+  color: #00ffcc;
+}
+
+.typing-text {
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
+  color: #00ffcc;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.4rem;
+  color: #00ffcc;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #00ffcc;
+  background: black;
+  color: #00ffcc;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+input::placeholder {
+  color: #00ffaa88;
+}
+
+.input-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 4px;
+  box-shadow: 0 0 15px #00ffcc;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background: transparent;
+  border: none;
+  color: #00ffcc;
+  cursor: pointer;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  background: linear-gradient(to right, #00ffaa, #005566);
+  color: black;
+  font-weight: bold;
+  text-shadow: 0 0 3px #00ffaa;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  box-shadow: 0 0 15px #00ffaa;
+}
+
+.submit-btn.loading {
+  background: #001100;
+  color: #00ff00;
+}
+
+.loading-spinner {
+  border: 3px solid #00ff00;
+  border-top: 3px solid transparent;
+  border-radius: 50%;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  animation: spin 1s linear infinite;
+  margin-right: 10px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.login-footer {
+  margin-top: 2rem;
+  text-align: center;
+  color: #00ffaa;
+  font-size: 0.8rem;
+}
+
+.status-indicator {
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.status-dot {
+  height: 8px;
+  width: 8px;
+  background: #00ff00;
+  border-radius: 50%;
+  box-shadow: 0 0 6px #00ff00;
+}
+
+.icon-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.icon-container svg {
+  height: 28px;
+  width: 28px;
+  fill: #00ffcc;
+}
